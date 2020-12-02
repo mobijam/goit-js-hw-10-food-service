@@ -1,34 +1,33 @@
-import { bodyColor, toogleBtn } from './refs-data-module';
-import { DARK, LIGHT } from './themes';
+import {refs, Theme} from './refs-data-module';
 
 export const changeTheme = function (event) {
     
     if (event.target.checked) {
-        bodyColor.classList.add(DARK);
-        bodyColor.classList.remove(LIGHT);
-        localStorage.setItem('theme', 'dark');
+        refs.bodyColor.classList.add(Theme.DARK);
+        refs.bodyColor.classList.remove(Theme.LIGHT);
+        localStorage.setItem('Theme', 'dark');
     }
 
     else {
-        bodyColor.classList.add(LIGHT);
-        bodyColor.classList.remove(DARK);
-        localStorage.setItem('theme', 'light');
+        refs.bodyColor.classList.add(Theme.LIGHT);
+        refs.bodyColor.classList.remove(Theme.DARK);
+        localStorage.setItem('Theme', 'light');
     }
 
 };
 
-toogleBtn.addEventListener('change', changeTheme);
+refs.toogleBtn.addEventListener('change', changeTheme);
 
 export const saveTheme = function () {
-    if (localStorage.getItem('theme') === 'dark') {
+    if (localStorage.getItem('Theme') === 'dark') {
        
-        bodyColor.classList.add(DARK);
-        toogleBtn.checked = true;
+        refs.bodyColor.classList.add(Theme.DARK);
+        refs.toogleBtn.checked = true;
     }
     else {
-        bodyColor.classList.add(LIGHT);
-        toogleBtn.checked = false;
+        refs.bodyColor.classList.add(Theme.LIGHT);
+        refs.toogleBtn.checked = false;
     }
 };
 
-toogleBtn.addEventListener('change', saveTheme);
+refs.toogleBtn.addEventListener('change', saveTheme);
